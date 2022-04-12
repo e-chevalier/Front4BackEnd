@@ -1,22 +1,13 @@
-const getProducts = async (id = 0) => {
+import { products } from '../products';
 
-    try {
-        return await (
-            fetch('products.json', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                return data.products
-            }));
-    } catch (err) {
-        return console.log(err)
-    }
-
+const getProducts= (id = 0) => {
+    return (
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                id === 0 ? resolve(products) : resolve(products.filter(prod => prod.id === id))
+            }, 2000)
+        })
+    )
 }
 
 export default getProducts;

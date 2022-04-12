@@ -1,14 +1,13 @@
 import Card from "react-bootstrap/Card"
 import Col from 'react-bootstrap/Col'
-import { useCartContext } from "../../../context/CartContext"
+import { Link } from 'react-router-dom'
+
 
 const Item = ({ prod }) => {
 
-    const { addItem } = useCartContext()
-
     return (
         <Col>
-            <Card>
+            <Card as={Link} to={`/item/${prod.id}`}>
                 <Card.Img variant="top" src={prod.thumbnail} />
                 <Card.Body>
                     <Card.Title>{prod.title}</Card.Title>
